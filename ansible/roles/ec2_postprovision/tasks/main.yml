@@ -1,7 +1,7 @@
 ---
 - name: refresh the provider
   uri:
-    url: "{{ manageiq.api_url }}/api/providers/1000000000013
+    url: "{{ manageiq.api_url }}/api/providers/1000000000013"
     method: POST
     body:
       action: refresh
