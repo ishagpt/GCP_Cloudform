@@ -1,5 +1,15 @@
 ---
-
+- name: refresh the provider
+  uri:
+    url: "{{ manageiq.api_url }}/api/providers/1000000000001"
+    method: POST
+    body:
+      action: refresh
+    body_format: json
+    validate_certs: "{{ manageiq_validate_certs }}"
+    user: "{{ manageiq_user }}"
+    password: "{{ manageiq_password }}"
+    status_code: 200
     
 - name: Lookup vms via uid_ems
   uri:
