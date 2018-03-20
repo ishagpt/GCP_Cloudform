@@ -15,10 +15,3 @@
     - role: ec2_postprovision
       when: ec2_created_vms is defined and manageiq is defined
 
-- name: Perform tasks on provisioned instances
-  hosts: ec2_hosts
-  become: true
-  #gather_facts: false
-
-  roles:
-    - role: ec2_runonce
