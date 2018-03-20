@@ -6,7 +6,7 @@ aws_secret_key:
 key_name: KeyIsha    # key pair to use on the instance
 group_id: sg-03b22d75     # security group id (or list of ids) to use with the instance
 instance_type: t2.micro   # instance type to use for the instance
-image: ami-556ba828       # ami ID to use for the instance
+image: ami-1853ac65       # ami ID to use for the instance
 vpc_subnet_id:            # list the subnet ID(s) in which to launch the instance (VPC), it will randomly choose one
   - subnet-27b8b343
 region: us-east-1         # The AWS region to use. Must be specified if ec2_url is not used.
