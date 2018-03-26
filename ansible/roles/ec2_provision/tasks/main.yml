@@ -5,7 +5,7 @@
     aws_secret_key: "{{ aws_secret_key }}"
     key_name: "{{ key_name }}"
     group_id: "{{ group_id }}"
-    state: present
+    #state: present
     instance_type: "{{ instance_type }}"
     image: "{{ image }}"
     vpc_subnet_id: "{{ vpc_subnet_id | random }}"
@@ -27,15 +27,15 @@
   with_items: "{{ ec2_created_vms.instances }}"
   when: verbose
 
-#- name: Wait for SSH
-#  wait_for:
-#    host: "{{ item.public_dns_name }}"
-#    port: 22
-#    delay: 60
-#    timeout: 320
-#    state: started
-#  with_items: "{{ ec2_created_vms.instances }}"
-#  when: assign_public_ip
+- name: Wait for SSH
+  wait_for:
+    host: "{{ item.public_dns_name }}"
+    port: 22
+    delay: 60
+    timeout: 320
+    state: started
+  with_items: "{{ ec2_created_vms.instances }}"
+  when: assign_public_ip
 
 - add_host:
     name: "{{ item.public_ip }}"
