@@ -34,7 +34,7 @@
     timeout: 320
     state: started
   with_items: "{{ ec2_created_vms.instances }}"
-  when: assign_public_ip
+  #when: assign_public_ip
 
 - add_host:
     name: "{{ item.public_ip }}"
