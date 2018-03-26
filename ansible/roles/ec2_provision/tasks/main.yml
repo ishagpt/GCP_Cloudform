@@ -1,23 +1,15 @@
 ---
 - name: Launch ec2 instances
-  ec2:
-    aws_access_key: "{{ aws_access_key }}"
-    aws_secret_key: "{{ aws_secret_key }}"
-    key_name: "{{ key_name }}"
-    group_id: "{{ group_id }}"
-    instance_type: "{{ instance_type }}"
-    image: "{{ image }}"
-    vpc_subnet_id: "{{ vpc_subnet_id | random }}"
-    region: "{{ region }}"
-    instance_tags: "{{ instance_tags }}"
-    assign_public_ip: "{{ assign_public_ip }}"
-    wait: "{{ wait }}"
-    count: "{{ count }}"
-    volumes:
-      - device_name: "{{ device_name }}"
-        volume_size: "{{ volume_size }}"
-        delete_on_termination: "{{ delete_on_termination }}"
-    user_data: "{{ user_data }}"
+  gce:
+    instance_names: test001
+    zone: us-central1-a
+    machine_type: n1-standard-1
+    image: debian-8
+    state: active
+    tags: "none"
+    service_account_email: "newgcp@artful-bonsai-198911.iam.gserviceaccount.com"
+    credentials_file: "abc.json"
+    project_id: "artful-bonsai-198911"
   register: ec2_created_vms
 
 - name: Log ec2_created_vms
