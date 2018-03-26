@@ -25,7 +25,7 @@ volume_size: 16           # size of the volume
 delete_on_termination: true # delete volume on termination
 
 # custom variables
-verbose: false
+verbose: true
 
 # user_data/cloud-init script
 user_data: |
