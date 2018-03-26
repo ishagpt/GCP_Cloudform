@@ -18,6 +18,7 @@
         volume_size: "{{ volume_size }}"
         delete_on_termination: "{{ delete_on_termination }}"
     user_data: "{{ user_data }}"
+    state: present
   register: ec2_created_vms
 
 - name: Log ec2_created_vms
@@ -26,14 +27,14 @@
   with_items: "{{ ec2_created_vms.instances }}"
   when: verbose
 
-- name: Wait for SSH
-  wait_for:
-    host: "{{ item.public_dns_name }}"
-    port: 22
-    delay: 60
-    timeout: 320
-    state: started
-  with_items: "{{ ec2_created_vms.instances }}"
+#- name: Wait for SSH
+#  wait_for:
+#    host: "{{ item.public_dns_name }}"
+#    port: 22
+#    delay: 60
+#    timeout: 320
+#    state: started
+#  with_items: "{{ ec2_created_vms.instances }}"
   #when: assign_public_ip
 
 - add_host:
