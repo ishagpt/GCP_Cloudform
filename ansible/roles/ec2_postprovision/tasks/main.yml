@@ -13,7 +13,7 @@
     
 - name: Lookup vms via uid_ems
   uri:
-    url: "{{ manageiq.api_url }}/api/vms?filter[]=uid_ems=1000000000008&expand=resources"
+    url: "{{ manageiq.api_url }}/api/vms?filter[]=uid_ems={{ item.id }}&expand=resources"
     method: GET
     body:
       action: refresh
