@@ -26,7 +26,7 @@
   until: lookup_vms_output.json.subcount > 0
   retries: "{{ max_retries }}"
   delay: "{{ retry_interval }}"
-  with_items: "{{ ec2_created_vms.instances }}"
+  with_items: "{{ ec2_created_vms.instance_names }}"
   #ignore_errors: yes
 
 - name: Log lookup_vms_output.results
