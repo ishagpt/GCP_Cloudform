@@ -1,7 +1,7 @@
 ---
 - name: Launch ec2 instances
   gce:
-    instance_names: test-1-12
+    instance_names: test-1-121
     zone: us-central1-a
     machine_type: n1-standard-1
     image: debian-8
